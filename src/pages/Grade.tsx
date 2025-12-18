@@ -5,9 +5,9 @@ import useGradeStore, { type Grade, type GradeActions, type GradeState } from ".
 import { useNavigate } from "react-router";
 
 const GRADE_LABELS: Record<Grade, string> = {
-    "10": "پایه دهم",
-    "11": "پایه یازدهم",
-    "12": "پایه دوازدهم",
+    10: "پایه دهم",
+    11: "پایه یازدهم",
+    12: "پایه دوازدهم",
 };
 
 export default function Grade() {
@@ -39,17 +39,17 @@ export default function Grade() {
             <div className="flex flex-col gap-3">
                 <button
                     type="button"
-                    onClick={() => setGrade("10")}
+                    onClick={() => setGrade(10)}
                     className={`w-full px-4 py-3 rounded-xl border transition-all duration-200
-                    ${isSelected("10")
+                    ${isSelected(10)
                             ? "border-blue-600 border-2 bg-blue-600/15"
                             : "border-zinc-200 bg-blue-600/10 text-natural"
                         }`}
                 >
                     <div className="flex items-center justify-between gap-x-3">
                         <div className="flex-1 text-right">
-                            <div className={`font-semibold ${isSelected("10") ? "text-blue-600" : ""}`}>
-                                {GRADE_LABELS["10"]}
+                            <div className={`font-semibold ${isSelected(10) ? "text-blue-600" : ""}`}>
+                                {GRADE_LABELS[10]}
                             </div>
                             <div className="text-xs mt-1 text-natural/70">
                                 شروع مسیر متوسطه دوم؛ از همین‌جا قوی شروع کنیم.
@@ -57,7 +57,7 @@ export default function Grade() {
                         </div>
                         <div
                             className={`shrink-0 size-12 rounded-full grid place-items-center text-xl font-bold
-                            ${isSelected("10") ? "bg-blue-600 text-white" : "bg-blue-600/40 text-white"}`}
+                            ${isSelected(10) ? "bg-blue-600 text-white" : "bg-blue-600/40 text-white"}`}
                         >
                             ۱۰
                         </div>
@@ -66,17 +66,17 @@ export default function Grade() {
 
                 <button
                     type="button"
-                    onClick={() => setGrade("11")}
+                    onClick={() => setGrade(11)}
                     className={`w-full px-4 py-3 rounded-xl border transition-all duration-200
-                    ${isSelected("11")
+                    ${isSelected(11)
                             ? "border-emerald-600 border-2 bg-emerald-600/15"
                             : "border-zinc-200 bg-emerald-600/10 text-natural"
                         }`}
                 >
                     <div className="flex items-center justify-between gap-x-3">
                         <div className="flex-1 text-right">
-                            <div className={`font-semibold ${isSelected("11") ? "text-emerald-600" : ""}`}>
-                                {GRADE_LABELS["11"]}
+                            <div className={`font-semibold ${isSelected(11) ? "text-emerald-600" : ""}`}>
+                                {GRADE_LABELS[11]}
                             </div>
                             <div className="text-xs mt-1 text-natural/70">
                                 سال مهم مرور و جمع‌بندی برای سال دوازدهم.
@@ -84,7 +84,7 @@ export default function Grade() {
                         </div>
                         <div
                             className={`shrink-0 size-12 rounded-full grid place-items-center text-xl font-bold
-                            ${isSelected("11") ? "bg-emerald-600 text-white" : "bg-emerald-600/40 text-white"}`}
+                            ${isSelected(11) ? "bg-emerald-600 text-white" : "bg-emerald-600/40 text-white"}`}
                         >
                             ۱۱
                         </div>
@@ -93,17 +93,17 @@ export default function Grade() {
 
                 <button
                     type="button"
-                    onClick={() => setGrade("12")}
+                    onClick={() => setGrade(12)}
                     className={`w-full px-4 py-3 rounded-xl border transition-all duration-200
-                    ${isSelected("12")
+                    ${isSelected(12)
                             ? "border-amber-600 border-2 bg-amber-600/15"
                             : "border-zinc-200 bg-amber-600/10 text-natural"
                         }`}
                 >
                     <div className="flex items-center justify-between gap-x-3">
                         <div className="flex-1 text-right">
-                            <div className={`font-semibold ${isSelected("12") ? "text-amber-600" : ""}`}>
-                                {GRADE_LABELS["12"]}
+                            <div className={`font-semibold ${isSelected(12) ? "text-amber-600" : ""}`}>
+                                {GRADE_LABELS[12]}
                             </div>
                             <div className="text-xs mt-1 text-natural/70">
                                 سال سرنوشت‌ساز؛ همه‌چیز برای نمره عالی آماده می‌شه.
@@ -111,7 +111,7 @@ export default function Grade() {
                         </div>
                         <div
                             className={`shrink-0 size-12 rounded-full grid place-items-center text-xl font-bold
-                            ${isSelected("12") ? "bg-amber-600 text-white" : "bg-amber-600/40 text-white"}`}
+                            ${isSelected(12) ? "bg-amber-600 text-white" : "bg-amber-600/40 text-white"}`}
                         >
                             ۱۲
                         </div>
