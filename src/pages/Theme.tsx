@@ -28,7 +28,7 @@ export default function Theme() {
     };
 
     return (
-        <div className="p-5 flex flex-col grow gap-y-4">
+        <div className="flex flex-col grow gap-y-4">
             <h2 className="text-2xl font-bold mb-2">انتخاب تم</h2>
             <p className="text-natural/60 mb-4 text-sm">
                 لطفاً تم مورد نظرت رو انتخاب کن. هر زمان خواستی می‌تونی از تنظیمات دوباره عوضش کنی.

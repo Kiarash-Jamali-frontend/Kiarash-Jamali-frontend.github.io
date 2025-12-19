@@ -89,7 +89,7 @@ export default function Auth() {
             //     id: data.user.id,
             //     phone: data.user.phone ?? null,
             // };
-            setUser({ id: "1", app_metadata: {}, aud: "", created_at: "0", user_metadata: { name: "کیارش", profileImage: "", xp: 350, coin: 30 }, phone: "09336041238", });
+            setUser({ id: "e3a5da8c-0c52-4066-9249-585211c1ea42", app_metadata: {}, aud: "", created_at: "0", user_metadata: { name: "کیارش", profileImage: "", xp: 350, coins: 30 }, phone: "09336041238", });
             toast.success("با موفقیت وارد شدی!");
             navigate("/", { viewTransition: true });
         } catch {
@@ -100,7 +100,7 @@ export default function Auth() {
     };
 
     return (
-        <div className="p-5 flex flex-col grow gap-y-4">
+        <div className="flex flex-col grow gap-y-4">
             <div className="flex items-center mb-2 gap-x-2.5">
                 <button
                     type="button"

@@ -4,7 +4,9 @@ import Intro from './pages/Intro';
 import Theme from './pages/Theme';
 import Grade from './pages/Grade';
 import Auth from './pages/Auth';
+import Todo from './pages/Todo';
 import Layout from './Layout';
+import Shop from './pages/Shop';
 
 const router = createBrowserRouter([
     {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
                 path: '/auth',
                 element: <Auth />,
             },
+            {
+                path: '/todo',
+                element: <Todo />,
+            },
+            {
+                path: '/shop',
+                element: <Shop />,
+            }
         ],
     },
 ]);

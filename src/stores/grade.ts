@@ -4,7 +4,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 export type Grade = 10 | 11 | 12;
 
 export type GradeState = {
-    grade: Grade | null;
+    grade: Grade;
 };
 
 export type GradeActions = {
@@ -14,7 +14,7 @@ export type GradeActions = {
 const useGradeStore = create<GradeState & GradeActions>()(
     persist(
         (set) => ({
-            grade: null,
+            grade: 10,
             setGrade: (grade) => set({ grade }),
         }),
         {

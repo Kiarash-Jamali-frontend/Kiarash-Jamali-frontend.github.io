@@ -14,7 +14,7 @@ export default function Intro() {
     };
 
     return (
-        <div className="p-5 flex flex-col grow">
+        <div className="flex flex-col grow">
             <div className="bg-zinc-400 border p-2 rounded-2xl">
                 <video src="/intro.mp4" autoPlay controls className="rounded-xl w-full"></video>
             </div>

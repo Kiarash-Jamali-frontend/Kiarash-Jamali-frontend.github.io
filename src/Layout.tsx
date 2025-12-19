@@ -4,6 +4,7 @@ import useIntroStore, { type IntroState } from "./stores/intro";
 import useThemeDetector from "./hooks/useThemeDetector";
 import useThemeStore, { type ThemeState, type ThemeActions } from "./stores/theme";
 import useUserStore, { type UserActions, type UserState } from "./stores/user";
+import Navbar from "./components/Navbar";
 // import supabase from "./supabase/client";
 
 export default function Layout() {
@@ -51,10 +52,15 @@ export default function Layout() {
         return <Navigate to={"/auth"} />
     }
 
+    const showNavbar = !publicRoutes.some((r) => pathname.startsWith(r)) && user;
+
     return (
         <div className={`${isDarkTheme ? "dark" : ""} bg-base`}>
-            <div className="max-w-md p-4 mx-auto min-h-screen flex flex-col">
-                <Outlet />
+            <div className="max-w-md mx-auto min-h-screen flex flex-col">
+                <div className="flex-1 p-4">
+                    <Outlet />
+                </div>
+                {showNavbar && <Navbar />}
             </div>
         </div>
     )

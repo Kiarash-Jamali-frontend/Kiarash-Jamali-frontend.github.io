@@ -3,25 +3,20 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import button from "../cva/button";
 import useGradeStore, { type Grade, type GradeActions, type GradeState } from "../stores/grade";
 import { useNavigate } from "react-router";
-
-const GRADE_LABELS: Record<Grade, string> = {
-    10: "پایه دهم",
-    11: "پایه یازدهم",
-    12: "پایه دوازدهم",
-};
+import { GRADE_LABELS } from "../constants/gridLabels";
 
 export default function Grade() {
     const navigate = useNavigate();
     const { grade, setGrade } = useGradeStore((state: GradeState & GradeActions) => state);
 
-    const isSelected = (g: Grade) => grade === g;
+    const isSelected = (g: Grade) => grade == g;
 
     const handleContinue = () => {
         navigate("/auth", { viewTransition: true });
     };
 
     return (
-        <div className="p-5 flex flex-col grow gap-y-4">
+        <div className="flex flex-col grow gap-y-4">
             <div className="flex items-center mb-2 gap-x-2.5">
                 <button
                     type="button"

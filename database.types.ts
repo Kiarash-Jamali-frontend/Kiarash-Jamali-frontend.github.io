@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       book: {
         Row: {
+          description: string | null
           grade: number
           id: number
           image: string
@@ -23,6 +24,7 @@ export type Database = {
           route: string
         }
         Insert: {
+          description?: string | null
           grade: number
           id?: number
           image: string
@@ -30,6 +32,7 @@ export type Database = {
           route: string
         }
         Update: {
+          description?: string | null
           grade?: number
           id?: number
           image?: string
@@ -37,6 +40,100 @@ export type Database = {
           route?: string
         }
         Relationships: []
+      }
+      subscription: {
+        Row: {
+          bookId: number | null
+          description: string | null
+          grade: number | null
+          id: number
+          isFullSubscription: boolean
+          name: string
+          price: number
+        }
+        Insert: {
+          bookId?: number | null
+          description?: string | null
+          grade?: number | null
+          id?: number
+          isFullSubscription: boolean
+          name: string
+          price: number
+        }
+        Update: {
+          bookId?: number | null
+          description?: string | null
+          grade?: number | null
+          id?: number
+          isFullSubscription?: boolean
+          name?: string
+          price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "subscription_bookId_fkey"
+            columns: ["bookId"]
+            isOneToOne: false
+            referencedRelation: "book"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      test_package: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: number
+          name: string
+          price: number
+          question_count: number
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          name: string
+          price: number
+          question_count: number
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          name?: string
+          price?: number
+          question_count?: number
+        }
+        Relationships: []
+      }
+      user_subscription: {
+        Row: {
+          id: number
+          purchasedAt: string
+          subscriptionId: number
+          userId: string
+        }
+        Insert: {
+          id?: number
+          purchasedAt?: string
+          subscriptionId: number
+          userId: string
+        }
+        Update: {
+          id?: number
+          purchasedAt?: string
+          subscriptionId?: number
+          userId?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_subscription_subscriptionId_fkey"
+            columns: ["subscriptionId"]
+            isOneToOne: false
+            referencedRelation: "subscription"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
