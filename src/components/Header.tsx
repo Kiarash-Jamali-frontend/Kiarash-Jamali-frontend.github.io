@@ -38,7 +38,7 @@ export default function Header() {
                     )}
                 </div>
             </Link>
-            <div className="flex items-stretch gap-x-2">
+            <div className="flex items-stretch flex-wrap justify-end gap-x-2">
                 <div className="flex items-center gap-x-1.5 px-2 py-1 bg-base border rounded-lg">
                     <span className="text-xs font-medium">{coins.toLocaleString("fa-IR")}</span>
                     <FontAwesomeIcon icon={faCoins} className="text-yellow-500 text-xs" />

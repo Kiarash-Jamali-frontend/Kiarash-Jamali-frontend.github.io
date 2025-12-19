@@ -14,11 +14,11 @@ import useRankingStore from "./stores/ranking";
 
 export default function Layout() {
     const systemPrefersDark = useThemeDetector();
-    const { fetchBooks } = useBooksStore((state) => state);
-    const { fetchPackages } = useShopStore((state) => state);
-    const { fetchProfile } = useUserStore((state) => state);
-    const { fetchRanking } = useRankingStore((state) => state);
-    const { grade } = useGradeStore((state) => state);
+    const { fetchBooks } = useBooksStore();
+    const { fetchPackages } = useShopStore();
+    const { fetchProfile } = useUserStore();
+    const { fetchRanking } = useRankingStore();
+    const { grade } = useGradeStore();
     const { mode } = useThemeStore((state: ThemeState & ThemeActions) => state);
     const isDarkTheme = (mode === "system" ? systemPrefersDark : mode === "dark");
     const { checked } = useIntroStore((state: IntroState) => state);

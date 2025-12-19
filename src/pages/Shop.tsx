@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import LoadingMessage from "../components/LoadingMessage";
 
 export default function Shop() {
-    const { user, updateCoins } = useUserStore((state) => state);
+    const { user, updateCoins } = useUserStore();
     const [loadingId, setLoadingId] = useState<number | null>(null);
     const { packages, isLoading } = useShopStore();
     const coins = user?.user_metadata?.coins ?? 0;
@@ -33,7 +33,7 @@ export default function Shop() {
         <div className="flex flex-col grow">
             <div className="space-y-5 mt-8">
                 {/* هدر فروشگاه و نمایش سکه */}
-                <h1 className="text-2xl font-bold text-natural">فروشگاه آزمون</h1>
+                <h1 className="text-2xl font-bold text-natural">فروشگاه</h1>
 
                 {
                     isLoading && (

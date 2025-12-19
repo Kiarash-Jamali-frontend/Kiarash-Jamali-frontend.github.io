@@ -4,7 +4,7 @@ import useBooksStore from "../stores/books";
 import LoadingMessage from "../components/LoadingMessage";
 
 export default function Home() {
-    const { books, isLoading } = useBooksStore((state) => state);
+    const { books, isLoading } = useBooksStore();
     return (
         <div className="flex flex-col grow">
             {

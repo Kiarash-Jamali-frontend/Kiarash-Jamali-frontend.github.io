@@ -67,23 +67,26 @@ export type Database = {
       }
       lesson: {
         Row: {
-          bookId: number | null
+          bookId: number
           grade: number
           id: number
+          isFree: boolean
           name: string
           sort: number
         }
         Insert: {
-          bookId?: number | null
+          bookId: number
           grade: number
           id?: number
+          isFree?: boolean
           name: string
           sort: number
         }
         Update: {
-          bookId?: number | null
+          bookId?: number
           grade?: number
           id?: number
+          isFree?: boolean
           name?: string
           sort?: number
         }

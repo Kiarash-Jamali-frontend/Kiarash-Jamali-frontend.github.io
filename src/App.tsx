@@ -9,6 +9,7 @@ import Layout from './Layout';
 import Shop from './pages/Shop';
 import Settings from './pages/Settings';
 import Ranking from './pages/Ranking';
+import LessonsAndTopics from './pages/LessonsAndTopics';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: "/ranking",
                 element: <Ranking />
+            },
+            {
+                path: `/book/:grade/:route`,
+                element: <LessonsAndTopics />
             }
         ],
     },

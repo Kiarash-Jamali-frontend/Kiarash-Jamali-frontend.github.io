@@ -5,7 +5,7 @@ import { GRADE_LABELS } from "../../constants/gridLabels";
 
 export default function BooksList({ books }: { books: Tables<'book'>[] }) {
 
-    const { grade } = useGradeStore((state) => state);
+    const { grade } = useGradeStore();
     // const [books, setBooks] = useState<Tables<'book'>[]>([]);
 
     return (
