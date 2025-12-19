@@ -86,7 +86,7 @@ export default function TopicContent() {
                 <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>{TOPIC_SLIDES[currentSlide]}</ReactMarkdown>
             </div>
 
-            {/* دکمه‌های ناوبری */}
+            {/* دکمه‌های  ناوبری */}
             <div className="grid grid-cols-2 gap-x-4 mt-auto pb-4">
                 <button
                     onClick={() => currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : navigate(-1)}
