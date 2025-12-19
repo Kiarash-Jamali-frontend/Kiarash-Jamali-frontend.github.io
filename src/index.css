@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: "Dana";
-    src: url("./assets/fonts/DanaVF.ttf") format("truetype");
+  font-family: "Dana";
+  src: url("./assets/fonts/DanaVF.ttf") format("truetype");
 }
 
 @theme inline {
-    --default-font-family: "Dana";
+  --default-font-family: "Dana";
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -39,6 +39,7 @@
 
 
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -50,27 +51,27 @@
 
   .dark {
     color: #fff;
-  --color-base: #1a1a1a;
-  --color-natural: var(--color-white);
-  --color-secondary: #2d2d2d;
-  --color-zinc-50: oklch(1.5% 0.002 67.839);
-  --color-zinc-100: oklch(3.9% 0.004 70.235);
-  --color-zinc-200: oklch(8.3% 0.006 71.563);
-  --color-zinc-300: oklch(14.5% 0.009 72.211);
-  --color-zinc-400: oklch(22.1% 0.012 72.567);
-  --color-zinc-500: oklch(30.9% 0.016 72.771);
-  --color-zinc-600: oklch(40.9% 0.019 72.873);
-  --color-zinc-700: oklch(52.1% 0.021 72.897);
-  --color-zinc-800: oklch(64.5% 0.021 72.859);
-  --color-zinc-900: oklch(76.1% 0.018 72.745);
-  --color-zinc-950: oklch(84.8% 0.015 72.523);
+    --color-base: #1a1a1a;
+    --color-natural: var(--color-white);
+    --color-secondary: #2d2d2d;
+    --color-zinc-50: oklch(1.5% 0.002 67.839);
+    --color-zinc-100: oklch(3.9% 0.004 70.235);
+    --color-zinc-200: oklch(8.3% 0.006 71.563);
+    --color-zinc-300: oklch(14.5% 0.009 72.211);
+    --color-zinc-400: oklch(22.1% 0.012 72.567);
+    --color-zinc-500: oklch(30.9% 0.016 72.771);
+    --color-zinc-600: oklch(40.9% 0.019 72.873);
+    --color-zinc-700: oklch(52.1% 0.021 72.897);
+    --color-zinc-800: oklch(64.5% 0.021 72.859);
+    --color-zinc-900: oklch(76.1% 0.018 72.745);
+    --color-zinc-950: oklch(84.8% 0.015 72.523);
   }
 }
 
 
 :root {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -78,6 +79,17 @@
 }
 
 .scrollbar-hidden {
--ms-overflow-style: none;
-scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.markdown table,
+.markdown tr,
+.markdown th,
+.markdown td {
+  border: 1px solid var(--color-natural);
+}
+
+.markdown table {
+  width: 100%;
 }
