@@ -45,7 +45,7 @@ export default function Layout() {
         //     setUser(null);
         // });
         setLoading(false);
-    }, [grade]);
+    }, [grade, fetchBooks, fetchPackages, fetchRanking, fetchProfile, fetchReviewedTopics, setLoading]);
 
     if (!checked && !pathname.startsWith("/intro")) {
         return <Navigate to={"/intro"} />

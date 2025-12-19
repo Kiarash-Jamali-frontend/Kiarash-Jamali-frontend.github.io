@@ -9,7 +9,7 @@ registerSW({ immediate: true })
 
 createRoot(document.getElementById('root')!).render(
   <>
-  <App />
+    <App />
     <Toaster position="top-center" />
   </>
 );
