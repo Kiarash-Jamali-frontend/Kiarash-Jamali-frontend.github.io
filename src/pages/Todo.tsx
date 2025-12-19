@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Header from "../components/Header";
 import useTodoStore, { type Todo, type TodoColor } from "../stores/todo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -81,7 +80,6 @@ export default function Todo() {
 
     return (
         <div className="flex flex-col grow">
-            <Header />
             <div className="mt-5 flex flex-col grow overflow-auto">
                 <h2 className="text-2xl font-bold mb-4">To-Do List</h2>
 

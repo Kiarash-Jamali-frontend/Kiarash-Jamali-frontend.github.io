@@ -7,6 +7,7 @@ import Auth from './pages/Auth';
 import Todo from './pages/Todo';
 import Layout from './Layout';
 import Shop from './pages/Shop';
+import Settings from './pages/Settings';
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />,
+            },
+            {
+                path: '/settings',
+                element: <Settings />,
             }
         ],
     },

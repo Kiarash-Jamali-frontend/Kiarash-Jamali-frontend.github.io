@@ -89,7 +89,7 @@ export default function Auth() {
             //     id: data.user.id,
             //     phone: data.user.phone ?? null,
             // };
-            setUser({ id: "e3a5da8c-0c52-4066-9249-585211c1ea42", app_metadata: {}, aud: "", created_at: "0", user_metadata: { name: "کیارش", profileImage: "", xp: 350, coins: 30 }, phone: "09336041238", });
+            setUser({ id: "e3a5da8c-0c52-4066-9249-585211c1ea42", app_metadata: {}, aud: "", created_at: "0", user_metadata: { name: "کیارش", profileImage: "", xp: 350, coins: 60 }, phone: "09336041238", });
             toast.success("با موفقیت وارد شدی!");
             navigate("/", { viewTransition: true });
         } catch {
@@ -110,7 +110,7 @@ export default function Auth() {
                             setOtp("");
                             setTimer(60);
                         } else {
-                            navigate(-1);
+                            navigate("/grade", { viewTransition: true });
                         }
                     }}
                     className="size-8 rounded-full bg-secondary border grid place-items-center"

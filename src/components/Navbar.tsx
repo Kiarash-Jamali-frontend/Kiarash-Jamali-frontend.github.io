@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faGamepad, faStore, faUser, faTrophy } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faGamepad, faStore, faTrophy, faGear } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router";
 
 type NavItem = {
@@ -12,7 +12,7 @@ const navItems: NavItem[] = [
     { path: "/", label: "خانه", icon: faHome },
     { path: "/todo", label: "To-Do", icon: faGamepad },
     { path: "/shop", label: "فروشگاه", icon: faStore },
-    { path: "/profile", label: "پروفایل", icon: faUser },
+    { path: "/settings", label: "تنظیمات", icon: faGear },
     { path: "/ranking", label: "رتبه‌بندی", icon: faTrophy },
 ];
 

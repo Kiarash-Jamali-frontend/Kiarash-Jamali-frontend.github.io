@@ -5,18 +5,30 @@ import useThemeDetector from "./hooks/useThemeDetector";
 import useThemeStore, { type ThemeState, type ThemeActions } from "./stores/theme";
 import useUserStore, { type UserActions, type UserState } from "./stores/user";
 import Navbar from "./components/Navbar";
+import useBooksStore from "./stores/books";
+import useShopStore from "./stores/shop";
+import useGradeStore from "./stores/grade";
+import Header from "./components/Header";
 // import supabase from "./supabase/client";
 
 export default function Layout() {
     const systemPrefersDark = useThemeDetector();
+    const { fetchBooks } = useBooksStore((state) => state);
+    const { fetchPackages } = useShopStore((state) => state);
+    const { fetchProfile } = useUserStore((state) => state);
+    const { grade } = useGradeStore((state) => state);
     const { mode } = useThemeStore((state: ThemeState & ThemeActions) => state);
     const isDarkTheme = (mode === "system" ? systemPrefersDark : mode === "dark");
     const { checked } = useIntroStore((state: IntroState) => state);
-    const { user, isLoading, setUser, setLoading } = useUserStore((state: UserState & UserActions) => state);
+    const { user, isLoading, setLoading } = useUserStore((state: UserState & UserActions) => state);
     const { pathname } = useLocation();
-    const publicRoutes: string[] = ['/auth','/intro','/theme','/grade'];
+    const publicRoutes: string[] = ['/auth', '/intro', '/theme', '/grade'];
+    const isPublicRoutes = publicRoutes.every((r) => !pathname.startsWith(r));
 
     useEffect(() => {
+        fetchBooks(grade);
+        fetchPackages(grade);
+        fetchProfile();
         // supabase.auth.getUser().then(({ data }) => {
         //     if (data.user) {
         //         setUser(data.user);
@@ -27,7 +39,7 @@ export default function Layout() {
         //     setUser(null);
         // });
         setLoading(false);
-    }, [setUser]);
+    }, [grade]);
 
     if (!checked && !pathname.startsWith("/intro")) {
         return <Navigate to={"/intro"} />
@@ -48,7 +60,7 @@ export default function Layout() {
         );
     }
 
-    if (!user && publicRoutes.every((r) => !pathname.startsWith(r))) {
+    if (!user && !isLoading && !isPublicRoutes) {
         return <Navigate to={"/auth"} />
     }
 
@@ -57,7 +69,12 @@ export default function Layout() {
     return (
         <div className={`${isDarkTheme ? "dark" : ""} bg-base`}>
             <div className="max-w-md mx-auto min-h-screen flex flex-col">
-                <div className="flex-1 p-4">
+                <div className="flex flex-col grow p-4">
+                    {
+                        isPublicRoutes && (
+                            <Header />
+                        )
+                    }
                     <Outlet />
                 </div>
                 {showNavbar && <Navbar />}

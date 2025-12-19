@@ -9,7 +9,7 @@ const input = cva(
                 lg: "px-4 py-3 text-base",
             },
             state: {
-                default: "border-zinc-200 focus:border-primary",
+                default: "focus:border-primary",
                 error: "border-red-500 focus:border-red-500",
                 disabled: "opacity-60 cursor-not-allowed",
             },
