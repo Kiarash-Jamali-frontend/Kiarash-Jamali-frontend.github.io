@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Navigate, Outlet, useLocation } from "react-router";
-import useIntroStore, { type IntroState } from "./stores/intro";
+// import useIntroStore, { type IntroState } from "./stores/intro";
 import useThemeDetector from "./hooks/useThemeDetector";
 import useThemeStore, { type ThemeState, type ThemeActions } from "./stores/theme";
 import useUserStore, { type UserActions, type UserState } from "./stores/user";
@@ -11,6 +11,8 @@ import useGradeStore from "./stores/grade";
 import Header from "./components/Header";
 import useRankingStore from "./stores/ranking";
 import useReviewedTopicsStore from "./stores/reviewedTopics";
+import { Toaster } from "react-hot-toast";
+import useIntroStore, { type IntroState } from "./stores/intro";
 // import supabase from "./supabase/client";
 
 export default function Layout() {
@@ -27,7 +29,7 @@ export default function Layout() {
     const { user, isLoading, setLoading } = useUserStore((state: UserState & UserActions) => state);
     const { pathname } = useLocation();
     const publicRoutes: string[] = ['/auth', '/intro', '/theme', '/grade'];
-    const isPublicRoutes = publicRoutes.every((r) => !pathname.startsWith(r));
+    const isPrivateRoutes = publicRoutes.every((r) => !pathname.startsWith(r));
 
     useEffect(() => {
         fetchBooks(grade);
@@ -45,11 +47,7 @@ export default function Layout() {
         //     setUser(null);
         // });
         setLoading(false);
-    }, [grade, fetchBooks, fetchPackages, fetchRanking, fetchProfile, fetchReviewedTopics, setLoading]);
-
-    if (!checked && !pathname.startsWith("/intro")) {
-        return <Navigate to={"/intro"} />
-    }
+    }, [grade]);
 
     if (isLoading) {
         return (
@@ -66,24 +64,25 @@ export default function Layout() {
         );
     }
 
-    if (!user && !isLoading && !isPublicRoutes) {
-        return <Navigate to={"/auth"} />
-    }
-
     const showNavbar = !publicRoutes.some((r) => pathname.startsWith(r)) && user;
+
+    if ((!checked && (!user && !isLoading))) {
+        return <Navigate to={"/intro"} />
+    }
 
     return (
         <div className={`${isDarkTheme ? "dark" : ""} bg-base`}>
             <div className="max-w-md mx-auto min-h-screen flex flex-col">
                 <div className="flex flex-col grow p-4">
                     {
-                        isPublicRoutes && (
+                        isPrivateRoutes && (
                             <Header />
                         )
                     }
                     <Outlet />
                 </div>
                 {showNavbar && <Navbar />}
+                <Toaster position="top-center" />
             </div>
         </div>
     )
