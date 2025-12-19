@@ -28,3 +28,5 @@
 * **Backend:** Supabase (Auth, Database, Storage)
 * **State Management:** Zustand
 * **Styling:** Tailwind CSS & CVA
+
+برای اجرا و استفاده پروژه ابتدا دستور npm i و سپس دستور npm run dev را وارد نمایید.
