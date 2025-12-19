@@ -100,6 +100,35 @@ export type Database = {
           },
         ]
       }
+      reviewed_topics: {
+        Row: {
+          created_at: string
+          id: number
+          topicId: number
+          userId: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          topicId: number
+          userId: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          topicId?: number
+          userId?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviewed_topics_topicId_fkey"
+            columns: ["topicId"]
+            isOneToOne: false
+            referencedRelation: "topic"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       subscription: {
         Row: {
           bookId: number | null
@@ -181,18 +210,21 @@ export type Database = {
       }
       topic: {
         Row: {
+          content: string
           id: number
           lessonId: number
           name: string
           sort: number
         }
         Insert: {
+          content: string
           id?: number
           lessonId: number
           name: string
           sort: number
         }
         Update: {
+          content?: string
           id?: number
           lessonId?: number
           name?: string

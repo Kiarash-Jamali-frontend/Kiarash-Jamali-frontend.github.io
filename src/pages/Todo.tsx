@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import input from "../cva/input";
 import { AnimatePresence, motion } from "framer-motion";
+import BlurTransition from "../components/BlurTransition";
 
 const TODO_COLORS: {
     value: TodoColor;
@@ -79,7 +80,7 @@ export default function Todo() {
     };
 
     return (
-        <div className="flex flex-col grow">
+        <BlurTransition className="flex flex-col grow">
             <div className="mt-5 flex flex-col grow overflow-auto">
                 <h2 className="text-2xl font-bold mb-4">To-Do List</h2>
 
@@ -307,6 +308,6 @@ export default function Todo() {
                     )}
                 </div>
             </div>
-        </div>
+        </BlurTransition>
     );
 }

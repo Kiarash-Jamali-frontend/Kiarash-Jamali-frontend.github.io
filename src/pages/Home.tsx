@@ -1,7 +1,8 @@
 import BooksList from "../components/Home/BooksList";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import useBooksStore from "../stores/books";
 import LoadingMessage from "../components/LoadingMessage";
+import BlurTransition from "../components/BlurTransition";
 
 export default function Home() {
     const { books, isLoading } = useBooksStore();
@@ -15,12 +16,9 @@ export default function Home() {
             <AnimatePresence>
                 {
                     !isLoading && (
-                        <motion.div initial="hide" animate="show" exit="hide" variants={{
-                            show: { opacity: 1, y: 0, filter: "blur(0rem)" },
-                            hide: { opacity: 0, y: 24, filter: "blur(1rem)" }
-                        }}>
+                        <BlurTransition>
                             <BooksList books={books} />
-                        </motion.div>
+                        </BlurTransition>
                     )
                 }
             </AnimatePresence>

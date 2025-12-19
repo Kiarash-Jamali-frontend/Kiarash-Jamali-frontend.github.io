@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, faMoon, faSun, faDesktop, faGraduationCap, faUser, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faMoon, faSun, faDesktop, faGraduationCap, faUser, faChevronLeft, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import useUserStore from "../stores/user";
 import useThemeStore from "../stores/theme";
 import useGradeStore from "../stores/grade";
@@ -9,12 +9,14 @@ import input from "../cva/input";
 import supabase from "../supabase/client";
 import toast from "react-hot-toast";
 import { GRADE_LABELS } from "../constants/gridLabels";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import BlurTransition from "../components/BlurTransition";
 
 export default function Settings() {
     const { user, fetchProfile } = useUserStore();
     const { mode, setMode } = useThemeStore();
     const { grade, setGrade } = useGradeStore();
+    const navigate = useNavigate();
 
     const [name, setName] = useState(user?.user_metadata?.name || "");
     const [isUpdating, setIsUpdating] = useState(false);
@@ -54,10 +56,14 @@ export default function Settings() {
         setIsUpdating(false);
     };
 
-    return (
-        <div className="flex flex-col gap-y-4 mt-5 animate-in fade-in duration-500">
-            <h1 className="text-xl font-bold text-natural px-2">تنظیمات</h1>
+    const handleLogout = () => {
+        supabase.auth.signOut();
+        localStorage.clear();
+        navigate("/intro");
+    }
 
+    return (
+        <BlurTransition className="flex flex-col gap-y-4 mt-5">
             {/* بخش آواتار */}
             <div className="flex flex-col items-center gap-y-3 bg-secondary p-6 rounded-xl border border-zinc-200 dark:border-white/10">
                 <div className="relative size-24">
@@ -79,19 +85,19 @@ export default function Settings() {
                     <p className="text-xs text-natural/50 mt-1" dir="ltr">{user?.phone}</p>
                 </div>
                 <div className="w-full">
-                    <label className="text-xs font-bold text-natural/60 mr-1">نام و نام‌خانوادگی</label>
-                    <input className={input({ size: "md" })} value={name} onChange={(e) => setName(e.target.value)} />
+                    <label className="text-xs font-bold text-natural/60 mr-1" htmlFor="name">نام و نام‌خانوادگی</label>
+                    <input id="name" className={input({ size: "md" })} value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <button onClick={handleSave} disabled={isUpdating} className={button({ className: "w-full rounded-2xl" })}>
                     بروزرسانی پروفایل
                 </button>
             </div>
 
-            <Link to={`/full-subscription/${grade}`} className="p-4 flex items-center justify-between bg-purple-600/5 border-2 shadow-lg shadow-purple-400/15 border-purple-600 rounded-xl">
-                <div className="font-bold text-purple-600">
+            <Link to={`/full-subscription/${grade}`} className="p-4 flex items-center justify-between bg-purple-600 text-white rounded-xl">
+                <div className="font-bold">
                     خرید اشتراک کامل {GRADE_LABELS[grade]}
                 </div>
-                <FontAwesomeIcon icon={faChevronLeft} className="text-purple-600" />
+                <FontAwesomeIcon icon={faChevronLeft} />
             </Link>
 
             {/* تم برنامه (سه حالته) */}
@@ -134,6 +140,11 @@ export default function Settings() {
                     ))}
                 </div>
             </div>
-        </div>
+
+            <button className={button({ intent: "dangerOutline" })} onClick={handleLogout}>
+                <FontAwesomeIcon icon={faSignOut} className="me-2" />
+                خروج از حساب کاربری
+            </button>
+        </BlurTransition>
     );
 }

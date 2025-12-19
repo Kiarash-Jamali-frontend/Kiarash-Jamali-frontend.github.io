@@ -4,6 +4,7 @@ import button from "../cva/button";
 import useGradeStore, { type Grade, type GradeActions, type GradeState } from "../stores/grade";
 import { useNavigate } from "react-router";
 import { GRADE_LABELS } from "../constants/gridLabels";
+import BlurTransition from "../components/BlurTransition";
 
 export default function Grade() {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Grade() {
     };
 
     return (
-        <div className="flex flex-col grow gap-y-4">
+        <BlurTransition className="flex flex-col grow gap-y-4">
             <div className="flex items-center mb-2 gap-x-2.5">
                 <button
                     type="button"
@@ -122,7 +123,7 @@ export default function Grade() {
                 ورود به حساب کاربری
                 <FontAwesomeIcon icon={faChevronLeft} />
             </button>
-        </div>
+        </BlurTransition>
     );
 }
 

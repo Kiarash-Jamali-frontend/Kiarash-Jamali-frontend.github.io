@@ -4,8 +4,9 @@ import toast from "react-hot-toast";
 import type { Tables } from "../../database.types";
 import useUserStore from "../stores/user";
 import useShopStore from "../stores/shop";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import LoadingMessage from "../components/LoadingMessage";
+import BlurTransition from "../components/BlurTransition";
 
 export default function Shop() {
     const { user, updateCoins } = useUserStore();
@@ -44,10 +45,7 @@ export default function Shop() {
                 <AnimatePresence>
                     {
                         !isLoading && (
-                            <motion.div initial="hide" animate="show" exit="hide" variants={{
-                                show: { opacity: 1, y: 0, filter: "blur(0rem)" },
-                                hide: { opacity: 0, y: 24, filter: "blur(1rem)" }
-                            }}>
+                            <BlurTransition>
                                 {/* لیست پکیج‌ها */}
                                 <div className="grid gap-4">
                                     {packages.map((pkg) => (
@@ -79,7 +77,7 @@ export default function Shop() {
                                         </div>
                                     ))}
                                 </div>
-                            </motion.div>
+                            </BlurTransition>
                         )
                     }
                 </AnimatePresence>

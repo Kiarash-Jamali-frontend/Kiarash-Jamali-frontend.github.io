@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy, faMedal, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import useRankingStore from "../stores/ranking";
 import useUserStore from "../stores/user";
+import BlurTransition from "../components/BlurTransition";
 
 export default function Ranking() {
     const { topUsers, isLoading } = useRankingStore();
@@ -24,13 +25,13 @@ export default function Ranking() {
     if (isLoading) return <div className="text-center p-10 font-bold">در حال دریافت رتبه‌بندی...</div>;
 
     return (
-        <div className="flex flex-col mt-6">
+        <BlurTransition className="flex flex-col mt-6">
             <div className="flex items-center gap-x-3 mb-6 px-2">
                 <div className="size-12 bg-amber-500/20 text-amber-500 rounded-2xl grid place-items-center">
                     <FontAwesomeIcon icon={faTrophy} size="lg" />
                 </div>
                 <div>
-                    <h1 className="text-xl font-black text-natural">برترین‌های تراز</h1>
+                    <h1 className="text-xl font-bold text-natural">برترین‌های تراز</h1>
                     <p className="text-xs text-natural/50">رقابت بر سر XP و رتبه علمی</p>
                 </div>
             </div>
@@ -124,6 +125,6 @@ export default function Ranking() {
                     </div>
                 </div>
             )}
-        </div>
+        </BlurTransition>
     );
 }

@@ -4,6 +4,7 @@ import useThemeDetector from "../hooks/useThemeDetector";
 import useThemeStore, { type ThemeActions, type ThemeState, type ThemeMode } from "../stores/theme";
 import { useNavigate } from "react-router";
 import { faChevronLeft, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import BlurTransition from "../components/BlurTransition";
 
 const getOppositeMode = (mode: ThemeMode): ThemeMode => {
     if (mode === "light") return "dark";
@@ -28,7 +29,7 @@ export default function Theme() {
     };
 
     return (
-        <div className="flex flex-col grow gap-y-4">
+        <BlurTransition className="flex flex-col grow gap-y-4">
             <h2 className="text-2xl font-bold mb-2">انتخاب تم</h2>
             <p className="text-natural/60 mb-4 text-sm">
                 لطفاً تم مورد نظرت رو انتخاب کن. هر زمان خواستی می‌تونی از تنظیمات دوباره عوضش کنی.
@@ -90,7 +91,7 @@ export default function Theme() {
                 انتخاب پایه تحصیلی
                 <FontAwesomeIcon icon={faChevronLeft} />
             </button>
-        </div>
+        </BlurTransition>
     );
 }
 

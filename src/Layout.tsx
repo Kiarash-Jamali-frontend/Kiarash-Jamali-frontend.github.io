@@ -10,6 +10,7 @@ import useShopStore from "./stores/shop";
 import useGradeStore from "./stores/grade";
 import Header from "./components/Header";
 import useRankingStore from "./stores/ranking";
+import useReviewedTopicsStore from "./stores/reviewedTopics";
 // import supabase from "./supabase/client";
 
 export default function Layout() {
@@ -18,6 +19,7 @@ export default function Layout() {
     const { fetchPackages } = useShopStore();
     const { fetchProfile } = useUserStore();
     const { fetchRanking } = useRankingStore();
+    const { fetchReviewedTopics } = useReviewedTopicsStore();
     const { grade } = useGradeStore();
     const { mode } = useThemeStore((state: ThemeState & ThemeActions) => state);
     const isDarkTheme = (mode === "system" ? systemPrefersDark : mode === "dark");
@@ -32,6 +34,7 @@ export default function Layout() {
         fetchPackages(grade);
         fetchRanking();
         fetchProfile();
+        fetchReviewedTopics();
         // supabase.auth.getUser().then(({ data }) => {
         //     if (data.user) {
         //         setUser(data.user);

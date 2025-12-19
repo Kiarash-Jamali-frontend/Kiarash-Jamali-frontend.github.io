@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import useIntroStore, { type IntroAction, type IntroState } from "../stores/intro";
 import { useNavigate } from "react-router";
+import BlurTransition from "../components/BlurTransition";
 
 export default function Intro() {
     const { checkIntro } = useIntroStore((state: IntroState & IntroAction) => state);
@@ -14,7 +15,7 @@ export default function Intro() {
     };
 
     return (
-        <div className="flex flex-col grow">
+        <BlurTransition className="flex flex-col grow">
             <div className="bg-zinc-400 border p-2 rounded-2xl">
                 <video src="/intro.mp4" autoPlay controls className="rounded-xl w-full"></video>
             </div>
@@ -32,6 +33,6 @@ export default function Intro() {
                 بزن بریم!
                 <FontAwesomeIcon icon={faChevronLeft} />
             </button>
-        </div>
+        </BlurTransition>
     )
 }

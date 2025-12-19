@@ -9,6 +9,7 @@ import button from "../cva/button";
 import useUserStore, { /*type User,*/ type UserActions, type UserState } from "../stores/user";
 import { toast } from "react-hot-toast";
 import supabase from "../supabase/client";
+import BlurTransition from "../components/BlurTransition";
 
 type Step = "phone" | "otp";
 
@@ -107,7 +108,7 @@ export default function Auth() {
     };
 
     return (
-        <div className="flex flex-col grow gap-y-4">
+        <BlurTransition className="flex flex-col grow gap-y-4">
             <div className="flex items-center mb-2 gap-x-2.5">
                 <button
                     type="button"
@@ -248,7 +249,7 @@ export default function Auth() {
                     </div>
                 </form>
             )}
-        </div>
+        </BlurTransition>
     );
 }
 
