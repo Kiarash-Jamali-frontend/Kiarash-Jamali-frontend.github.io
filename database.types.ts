@@ -41,6 +41,62 @@ export type Database = {
         }
         Relationships: []
       }
+      leaderboard: {
+        Row: {
+          id: number
+          name: string | null
+          profileImage: string | null
+          userId: string
+          xp: number
+        }
+        Insert: {
+          id?: number
+          name?: string | null
+          profileImage?: string | null
+          userId: string
+          xp: number
+        }
+        Update: {
+          id?: number
+          name?: string | null
+          profileImage?: string | null
+          userId?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      lesson: {
+        Row: {
+          bookId: number | null
+          grade: number
+          id: number
+          name: string
+          sort: number
+        }
+        Insert: {
+          bookId?: number | null
+          grade: number
+          id?: number
+          name: string
+          sort: number
+        }
+        Update: {
+          bookId?: number | null
+          grade?: number
+          id?: number
+          name?: string
+          sort?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_bookId_fkey"
+            columns: ["bookId"]
+            isOneToOne: false
+            referencedRelation: "book"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       subscription: {
         Row: {
           bookId: number | null
@@ -81,30 +137,73 @@ export type Database = {
       }
       test_package: {
         Row: {
+          bookId: number
           created_at: string | null
           description: string | null
+          grade: number
           id: number
           name: string
           price: number
           question_count: number
         }
         Insert: {
+          bookId: number
           created_at?: string | null
           description?: string | null
+          grade: number
           id?: number
           name: string
           price: number
           question_count: number
         }
         Update: {
+          bookId?: number
           created_at?: string | null
           description?: string | null
+          grade?: number
           id?: number
           name?: string
           price?: number
           question_count?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "test_package_bookId_fkey"
+            columns: ["bookId"]
+            isOneToOne: false
+            referencedRelation: "book"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      topic: {
+        Row: {
+          id: number
+          lessonId: number
+          name: string
+          sort: number
+        }
+        Insert: {
+          id?: number
+          lessonId: number
+          name: string
+          sort: number
+        }
+        Update: {
+          id?: number
+          lessonId?: number
+          name?: string
+          sort?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topic_lessonId_fkey"
+            columns: ["lessonId"]
+            isOneToOne: false
+            referencedRelation: "lesson"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_subscription: {
         Row: {

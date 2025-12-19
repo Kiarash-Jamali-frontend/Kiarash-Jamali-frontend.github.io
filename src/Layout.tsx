@@ -9,6 +9,7 @@ import useBooksStore from "./stores/books";
 import useShopStore from "./stores/shop";
 import useGradeStore from "./stores/grade";
 import Header from "./components/Header";
+import useRankingStore from "./stores/ranking";
 // import supabase from "./supabase/client";
 
 export default function Layout() {
@@ -16,6 +17,7 @@ export default function Layout() {
     const { fetchBooks } = useBooksStore((state) => state);
     const { fetchPackages } = useShopStore((state) => state);
     const { fetchProfile } = useUserStore((state) => state);
+    const { fetchRanking } = useRankingStore((state) => state);
     const { grade } = useGradeStore((state) => state);
     const { mode } = useThemeStore((state: ThemeState & ThemeActions) => state);
     const isDarkTheme = (mode === "system" ? systemPrefersDark : mode === "dark");
@@ -28,6 +30,7 @@ export default function Layout() {
     useEffect(() => {
         fetchBooks(grade);
         fetchPackages(grade);
+        fetchRanking();
         fetchProfile();
         // supabase.auth.getUser().then(({ data }) => {
         //     if (data.user) {

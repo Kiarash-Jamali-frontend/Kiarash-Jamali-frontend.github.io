@@ -28,7 +28,7 @@ export default function BooksList({ books }: { books: Tables<'book'>[] }) {
                                     </div>
                                 </div>
                                 <div className="grow w-[40%] flex justify-end">
-                                    <img src={b.image} className="w-full h-full max-h-32 object-contain" />
+                                    <img src={b.image} className="pt-2.5 w-full h-full max-h-28 object-contain" />
                                 </div>
                             </Link>
                         )

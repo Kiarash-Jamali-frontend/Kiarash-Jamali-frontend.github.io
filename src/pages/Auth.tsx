@@ -8,6 +8,7 @@ import input from "../cva/input";
 import button from "../cva/button";
 import useUserStore, { /*type User,*/ type UserActions, type UserState } from "../stores/user";
 import { toast } from "react-hot-toast";
+import supabase from "../supabase/client";
 
 type Step = "phone" | "otp";
 
@@ -89,6 +90,12 @@ export default function Auth() {
             //     id: data.user.id,
             //     phone: data.user.phone ?? null,
             // };
+            await supabase.from('leaderboard').insert({
+                userId: "e3a5da8c-0c52-4066-9249-585211c1ea42",
+                xp: 0,
+                name: "test",
+                profileImage: ""
+            });
             setUser({ id: "e3a5da8c-0c52-4066-9249-585211c1ea42", app_metadata: {}, aud: "", created_at: "0", user_metadata: { name: "کیارش", profileImage: "", xp: 350, coins: 60 }, phone: "09336041238", });
             toast.success("با موفقیت وارد شدی!");
             navigate("/", { viewTransition: true });

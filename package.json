@@ -18,6 +18,7 @@
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@supabase/supabase-js": "^2.88.0",
     "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-virtual": "^3.13.13",
     "class-variance-authority": "^0.7.1",
     "framer-motion": "^12.23.26",
     "react": "^19.2.0",

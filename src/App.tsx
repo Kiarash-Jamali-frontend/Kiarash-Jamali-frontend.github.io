@@ -8,6 +8,7 @@ import Todo from './pages/Todo';
 import Layout from './Layout';
 import Shop from './pages/Shop';
 import Settings from './pages/Settings';
+import Ranking from './pages/Ranking';
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: '/settings',
                 element: <Settings />,
+            },
+            {
+                path: "/ranking",
+                element: <Ranking />
             }
         ],
     },
